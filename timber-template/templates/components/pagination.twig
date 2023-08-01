@@ -1,0 +1,30 @@
+{% if posts.pagination.pages %}
+    <div class="mt-16">
+        <nav class="flex justify-center">
+            <ul class="flex">
+                {# previous #}
+                {% if posts.pagination.prev %}
+                    <li class="c-pagination__naviWrap c-pagination__naviWrap-notDisable"><a href="{{ posts.pagination.prev.link }}"><i class="icon-arrow-left"></i></a></li>
+                {% else %}
+                    <li class="c-pagination__naviWrap"><span><i class="icon-arrow-left"></i></span></li>
+                {% endif %}
+                {# Pages #}
+                {% for page in posts.pagination.pages %}
+                    {% if page.current %}
+                        <li class="c-pagination__wrap"><span class="c-pagination__btn">{{ page.title }}</span></li>
+                    {% elseif page.class == 'dots' %}
+                        <li class="c-pagination__wrap"><span class="c-pagination__btn">{{ page.title }}</span></li>
+                    {% else %}
+                        <li class="c-pagination__wrap"><a class="c-pagination__btn c-pagination__btn-notCurrent" href="{{ page.link }}">{{ page.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {# Next #}
+                {% if posts.pagination.next %}
+                    <li class="c-pagination__naviWrap c-pagination__naviWrap-notDisable"><a href="{{ posts.pagination.next.link }}"><i class="icon-arrow-right"></i></a></li>
+                {% else %}
+                <li class="c-pagination__naviWrap"><span><i class="icon-arrow-right"></i></span></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}

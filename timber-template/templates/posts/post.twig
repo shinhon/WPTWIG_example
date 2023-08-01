@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="relative -mt-32 pt-32">
+        <div class="absolute w-auto h-auto left-0 top-0">
+            <img src="{{ theme.link }}/src/images/deco_01.svg" alt="">
+        </div>
+    </div>
+    <div class="c-container">
+        <div class="pt-16 c-container__inner pb-24">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-auto">
+                    <h6 class="text-p leading-none text-tri-400">{{ post.date('Y.m.d') }}</h6>
+                    <h2 class="text-h3 font-medium mt-4">{{ post.title }}</h2>
+                </div>
+                <div class="flex-shrink-0 flex ml-auto order-first sm:order-none">
+                    <div class="c-snsBtn"><a href="javascript:void(window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent(location.href)) ));"><i class="icon-facebook"></i></a></div>
+                    <div class="c-snsBtn">
+                        <a href="javascript:void(window.open('https://twitter.com/intent/tweet?url='.concat(encodeURIComponent(location.href))));"><i class="icon-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="mt-9 w-full h-px bg-pri-700"></div>
+            </div>
+            <div class="editorPanel pt-16 pb-20 border-b border-solid border-pri-700">
+                {{ post.content }}
+            </div>
+            <div class="pt-7 flex justify-between">
+                {% if post.prev %}
+                    <a href="{{ post.prev.link }}" class="text-tri-400 group"><i class="inline-block icon-arrow-left transition-all translate-x-0 group-hover:-translate-x-1 duration-300 ease-IO"></i>PREVIOUS POST</a>
+                {% endif %}
+                {% if post.next %}
+                    <a href="{{ post.next.link }}" class="text-tri-400 ml-auto group">NEXT POST<i class="inline-block icon-arrow-right transition-all translate-x-0 group-hover:translate-x-1 duration-300 ease-IO"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="relative -mt-32 pt-32">
+        <div class="absolute w-auto h-auto left-0 top-0">
+            <img class="w-screen h-auto" src="{{ theme.link }}/src/images/deco_05.svg" alt="">
+        </div>
+    </div>
+    <div class="c-container">
+        <div class="c-container__inner l-gap">
+            <div>
+                <h6 class="text-h6">プロジェクト</h6>
+                <h3 class="mt-2 text-h3">{{post.title}}</h3>
+            </div>
+            <div class="sm:pt-20">
+                <div class="flex flex-wrap -mx-4">
+                    {% if post.thumbnail.src %}
+                        <div class="px-4 mt-10 sm:mt-20 w-full sm:w-1/2">
+                            <img class="w-full h-auto" src="{{ post.thumbnail.src }}" alt="">
+                        </div>
+                    {% endif %}
+                    <div class="px-4 mt-10 sm:mt-20 relative w-full {{ post.thumbnail.src ? 'sm:w-1/2' : '' }}">
+                        <div class="sticky top-10">
+                            <h6 class="text-h4">プロジェクトメンバー</h6>
+                            <p class="mt-6">
+                                {% if members | length > 0 %}
+                                    {% for item in members %}
+                                        <span>{{ loop.first ? '' : ' / ' }}{{ item.title }}</span>
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="text-sp2-500">COMING SOON</span>
+                                {% endif %}
+                            </p>
+                            <div class="mt-10 sm:mt-14">
+                                <h6 class="text-h4">プロジェクト概要</h6>
+                                <div class="editorPanel mt-5">
+                                    {{ post.content }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if post.meta('project_detail') %}
+                        <div class="px-4 mt-10 sm:mt-20 w-full">
+                            <div class="editorPanel">
+                                {{ post.meta('project_detail') }}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% if old_projects | length >0 %}
+                <div class="mt-20 pt-12 border-t border-solid border-sp1-400">
+                    <div class="flex flex-wrap justify-between items-center">
+                        <h4 class="text-h4 mt-2">活動記録</h4>
+                        <div class="ml-auto mt-2">
+                            <a href="{{ post.meta('project_name').link }}" class="text-tri-400 group">VIEW MORE<i class="inline-block icon-arrow-right transition-all translate-x-0 group-hover:translate-x-1 duration-300 ease-IO"></i></a>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-4">
+                        {% for item in old_projects %}
+                            <div class="w-full sm:w-1/2 px-4 mt-7">
+                                {{ include('components/projectCard.twig') }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

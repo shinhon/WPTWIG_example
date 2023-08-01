@@ -1,0 +1,40 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ include('components/headerDeco.twig') }}
+    <div class="c-container">
+        <div class="c-container__inner l-gap">
+            <div>
+                <h3 class="text-h3">Members</h3>
+            </div>
+            {{ include('components/navibar.twig') }}
+            <div class="pb-14 pt-9">
+                <div class="flex flex-wrap items-stretch -mx-4">
+                    {% for item in members %}
+                        <div class="w-full sm:w-1/2 px-4 mt-7">
+                            {{ include('components/memberCard.twig') }}
+                        </div>
+                    {% endfor %}
+                </div>
+                {{ include('components/pagination.twig', { 'posts': members }) }}
+            </div>
+            {% if post.children and old_members | length > 0 %}
+                <div class="pt-10 border-t border-solid border-sp1-400">
+                    <div class="flex flex-wrap justify-between items-center">
+                        <h4 class="text-h4 mt-2">{{ post.children[0].title }}</h4>
+                        <div class="ml-auto mt-2">
+                            <a href="{{ post.children[0].link }}" class="text-tri-400 group">VIEW MORE<i class="inline-block icon-arrow-right transition-all translate-x-0 group-hover:translate-x-1 duration-300 ease-IO"></i></a>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-stretch -mx-4">
+                        {% for item in old_members %}
+                            <div class="w-full sm:w-1/2 px-4 mt-7">
+                                {{ include('components/memberCard.twig') }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

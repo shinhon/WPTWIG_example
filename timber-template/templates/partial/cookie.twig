@@ -1,0 +1,10 @@
+<div id="cookie">
+    <transition name="c-cookie">
+        <div v-if="!cookieIsCheck"  class="fixed w-full h-auto left-0 bottom-0 bg-white border-t border-solid border-t-pri-700 z-40 px-5 pt-2 pb-5 flex flex-wrap items-center justify-center">
+            <p class="w-full sm:w-auto text-small text-sp2-700/60 mt-3">当サイトでは、サイトの利便性向上のため、クッキー(Cookie)を使用しています。<br> サイトのクッキー(Cookie)の使用に関しては、「<a class="underline hover:text-tri-400 duration-300 ease-IO" href="{{ site.link }}/privacy-policy">プライバシーポリシー</a>」をお読みください。</p>
+            <div class="sm:ml-5 mt-3">
+                <button v-on:click="cookieClick" class="bg-pri-400 text-sp1-400 text-center py-1 px-5 hover:text-white hover:bg-tri-400 duration-300 ease-IO">OK</button>
+            </div>
+        </div>
+    </transition>
+</div>

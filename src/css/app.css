@@ -1,0 +1,40 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'Noto Sans JP', sans-serif;
+        will-change: auto;
+    }
+} */
+@import "./vendors/swiper.css";
+@import "./vendors/fontello.css";
+@import "./vendors/_perfectScrollbar.css";
+
+@import "tailwindcss/base";
+@import "./foundation/_setting.css";
+@import "./foundation/_fonts.css";
+
+@import "./layout/_editor.css";
+@import "./layout/_main.css";
+@import "./layout/_gap.css";
+
+@import "tailwindcss/components";
+@import "./components/_cookie.css";
+@import "./components/_loading.css";
+@import "./components/_container.css";
+@import "./components/_burger.css";
+@import "./components/_menu.css";
+@import "./components/_pagination.css";
+@import "./components/_navigationDot.css";
+@import "./components/_snsBtn.css";
+@import "./components/_gradient.css";
+@import "./components/_eColumn.css";
+@import "./components/_quote.css";
+@import "./components/_hashtag.css";
+@import "./components/_fullSizeImg.css";
+@import "./components/_iframe.css";
+@import "./components/_naviRoundBtn.css";
+
+@import "tailwindcss/utilities";

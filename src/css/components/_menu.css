@@ -1,0 +1,9 @@
+.c-menu-enter-active,
+.c-menu-leave-active {
+  @apply transition-all duration-700 ease-IO;
+}
+
+.c-menu-enter-from,
+.c-menu-leave-to {
+  @apply opacity-0 -translate-y-full pointer-events-none;
+}

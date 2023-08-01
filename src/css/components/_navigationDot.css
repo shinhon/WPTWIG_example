@@ -1,0 +1,6 @@
+.c-navigationDot {
+    @apply w-3 bg-sp2-500;
+    &-active {
+        @apply w-9 bg-tri-400;
+    }
+}

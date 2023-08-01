@@ -1,0 +1,12 @@
+.c-iframe {
+    @apply relative;
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: theme('padding.ar169');
+    }
+    &__item, .mce-object-iframe {
+        @apply absolute w-full h-full top-0 left-0;
+    }
+}

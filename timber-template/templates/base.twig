@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html {{ site.language_attributes }}>
+
+<head>
+	<meta charset="{{ site.charset }}" />
+	<title>{% if wp_title %}{{ post.title ?? title }} | {{ site.name }}{% else %}{{ site.name }} | {{ site.description }}{% endif %}</title>
+	<meta name="description" content="{{ site.description }}">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	{# favicon #}
+	<link rel="shortcut icon" href="{{ theme.link }}/src/images/favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="{{ theme.link }}/src/images/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="{{ theme.link }}/src/images/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ theme.link }}/src/images/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ theme.link }}/src/images/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ theme.link }}/src/images/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="{{ theme.link }}/src/images/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{ theme.link }}/src/images/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="{{ theme.link }}/src/images/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ theme.link }}/src/images/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="{{ theme.link }}/src/images/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ theme.link }}/src/images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{ theme.link }}/src/images/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ theme.link }}/src/images/favicon/favicon-16x16.png">
+	<link rel="manifest" href="{{ theme.link }}/src/images/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="{{ theme.link }}/src/images/favicon/ms-icon-144x144.png">
+	{# browser UI #}
+	<meta name="theme-color" content="#FAEADB" media="(prefers-color-scheme: light)">
+  	<meta name="theme-color" content="#82735C" media="(prefers-color-scheme: dark)">
+	{# SNS info #}
+	<meta property="og:title" content="{% if wp_title %}{{ post.title }} - {% endif %}{{ site.name }}">
+	<meta property="og:description" content="{{ site.description }}">
+	{% if fn('is_front_page') %}
+		<meta property="og:image" content="{{ theme.link }}/src/images/ogImage.jpg">
+	{% elseif wp_title and post.thumbnail.src %}
+		<meta property="og:image" content="{{ post.thumbnail.src }}">
+	{% else %}
+		<meta property="og:image" content="{{ theme.link }}/src/images/og-default.jpg">
+	{% endif %}
+	<meta property="og:url" content="{{ post.link }}">
+	<meta property="og:type" content="website">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{# wordpress setup #}
+	<link rel="author" href="{{ site.theme.link }}/humans.txt" />
+	<link rel="pingback" href="{{ site.pingback_url }}" />
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	{# custom style for timber twig #}
+	{{ enqueue_style('app', 'app') }}
+	{% block head %}{% endblock %}
+	{{function('wp_head')}}
+	{# Google service #}
+	<meta name="google-site-verification" content="jhzev9wFJmUSmga2OqkSj9UW8uVySQCLn0sEtuTE8iA" />
+</head>
+
+<body class="{{body_class}}" data-template="base.twig">
+	{% include 'partial/loading.twig' %}
+	{% include 'partial/header.twig' %}
+	<main role="main" class="l-main">
+		{% block content %}{% endblock %}
+	</main>
+	{% include 'partial/footer.twig' %}
+	{% include 'partial/cookie.twig' %}
+	{% set _block = block('script') %}
+	{% if _block is empty %}
+		{{ enqueue_script('main') }}
+	{% else %}
+		{{ _block|raw }}
+	{% endif %}
+	{{ function('wp_footer') }}
+</body>
+
+</html>

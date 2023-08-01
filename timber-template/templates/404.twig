@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ include('components/headerDeco.twig') }}
+    <div class="c-container h-full">
+		<div class="relative c-container__inner l-gap flex flex-col justify-center items-center" style="min-height: calc(100vh - 14rem);">
+			<h6 class="text-h6">Page not found.</h6>
+            <div class="mt-5">
+                <a href="{{ site.link }}" class="text-tri-400 group">BACK TO HOME<i class="inline-block icon-arrow-right transition-all translate-x-0 group-hover:translate-x-1 duration-300 ease-IO"></i></a>
+            </div>
+		</div>
+	</div>
+{% endblock %}

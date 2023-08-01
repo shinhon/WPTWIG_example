@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ include('components/headerDeco.twig') }}
+    <div class="c-container">
+        <div class="c-container__inner l-gap">
+            <div>
+                <h6 class="text-h6 text-pri-700">Members</h6>
+                <h3 class="text-h3">{{ post.title }}</h3>
+            </div>
+            <div class="pb-14 pt-9">
+                <div class="flex flex-wrap items-stretch -mx-4">
+                    {% for item in members %}
+                        <div class="w-full sm:w-1/2 px-4 mt-7">
+                            {{ include('components/memberCard.twig') }}
+                        </div>
+                    {% endfor %}
+                </div>
+                {{ include('components/pagination.twig', { 'posts': members }) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="relative -mt-32 pt-32">
+        <div class="absolute w-auto h-auto left-0 top-0">
+            <img src="{{ theme.link }}/src/images/deco_04.svg" alt="">
+        </div>
+    </div>
+    <div class="c-container">
+        <div class="c-container__inner l-gap">
+            <div>
+                <h3 class="text-h3">Theses</h3>
+            </div>
+            {{ include('components/navibar.twig') }}
+            <div class="flex flex-wrap items-stretch -mx-4 pt-8">
+                {% if theses | length > 0 %}
+                    {% for item in theses %}
+                        <div class="w-full sm:w-1/2 px-4 mt-8">
+                            {% if item.meta('thesis_link') or item.meta('thesis_file') %}
+                            <a href="{{ item.meta('is_link') ? item.meta('thesis_link') : item.meta('thesis_file') }}" target="_blank" class="relative overflow-hidden block h-full p-5 border border-solid border-pri-700 group c-gradient-trans">
+                                <div class="relative">
+                                    <div class="flex justify-between items-center">
+                                        <div class="relative pl-3">
+                                            <div class="absolute w-0.5 h-4 top-0 left-0 bg-tri-400"></div>
+                                            <div class="text-small leading-[1rem] {{ item.meta('thesis_outstanding').name ? 'text-tri-400' : 'text-sp1-400' }}">{{ item.meta('thesis_year') | date('Y') }}{{ item.meta('thesis_outstanding').name ? " - #{item.meta('thesis_outstanding').name}" : '' }}</div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full bg-pri-400 text-pri-700 group-hover:text-white group-hover:bg-tri-400 duration-500 ease-IO text-small leading-6 flex items-center justify-center"><i class="icon-link"></i></div>
+                                        {# <div class="text-sp1-400 text-small">VIEW MORE<i class="inline-block icon-arrow-right transition-all translate-x-0 group-hover:translate-x-1 duration-300 ease-IO"></i></div> #}
+                                    </div>
+                                    <h6 class="text-h6 mt-3">{{ item.title }}</h6>
+                                    <h6 class="text-p leading-none mt-4"><span>- </span>{{ item.meta('thesis_author') }}</h6>
+                                </div>
+                            </a>
+                            {% else %}
+                            <div class="relative overflow-hidden block h-full p-5 border border-solid border-pri-700">
+                                <div class="relative">
+                                    <div class="relative pl-3">
+                                        <div class="absolute w-0.5 h-4 top-0 left-0 bg-tri-400"></div>
+                                        <div class="text-small leading-[1rem] {{ item.meta('thesis_outstanding').name ? 'text-tri-400' : 'text-sp1-400' }}">{{ item.meta('thesis_year') | date('Y') }}{{ item.meta('thesis_outstanding').name ? " - #{item.meta('thesis_outstanding').name}" : '' }}</div>
+                                    </div>
+                                    <h6 class="text-h6 mt-3">{{ item.title }}</h6>
+                                    <h6 class="text-p leading-none mt-4"><span>- </span>{{ item.meta('thesis_author') }}</h6>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="w-full text-center text-pri-700 mt-16">COMING SOON</div>
+                {% endif %}
+            </div>
+            {{ include('components/pagination.twig', { 'posts': theses }) }}
+        </div>
+    </div>
+{% endblock %}

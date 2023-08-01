@@ -1,0 +1,20 @@
+.c-quote {
+    @apply relative bg-sp2-400 px-4 pb-4 text-center;
+    &:before {
+        content: '\e801';
+        font-family: 'fontello';
+        /* position: absolute;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        text-align: center;
+        transform: translateY(-50%); */
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1;
+        padding-top: theme('spacing.6');
+        padding-bottom: theme('spacing.2');
+        color: theme('colors.sp1.400');
+    }
+}

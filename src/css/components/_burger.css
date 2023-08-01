@@ -1,0 +1,25 @@
+.c-burger {
+    &__bar {
+        span {
+            @apply absolute w-4 h-0.5 bg-pri-700 duration-500 ease-IO;
+        }
+        &.-active {
+            span {
+                @apply w-0.5 opacity-0;
+            }
+        }
+    }
+    &__cross {
+        span {
+            @apply w-0 h-0.5 bg-pri-700 origin-center transition-all duration-500 ease-IO;
+        }
+        &.-active {
+            span {
+                @apply w-7;
+            }
+        }
+    }
+    &__crossChild {
+        @apply absolute w-full h-full top-0 left-0 flex justify-center items-center;
+    }
+}

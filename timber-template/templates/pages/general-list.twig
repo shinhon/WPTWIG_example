@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{{ include('components/headerDeco.twig') }}
+	<div class="c-container">
+		<div class="c-container__inner l-gap">
+			<div>
+				<h3 class="text-h3 text-pri">{{ post.title }}</h3>
+			</div>
+			<div class="l-gap-editor editorPanel">
+				{{ post.content }}
+			</div>
+			{% for group in post.meta('group_type') %}
+				<div class="mt-10">
+					{% if group.group_title %}
+						<div class="relative pl-3 text-h5">
+							<div class="absolute w-1 h-[1.2em] bg-pri-700 left-0 top-[0.1em]"></div>
+							<h5 class="leading-[1.4em]">{{ group.group_title }}</h5>
+						</div>
+					{% endif %}
+					<ul class="mt-4 divide-y divide-solid divide-pri-400">
+						{% for item in group.group_list %}
+							<li class="text-p">
+								{% if item.link %}
+								<a href="{{ item.link }}" target="_blank" class="flex items-center px-1 py-3 group hover:bg-pri-300 duration-300 ease-IO">
+									<span class="mr-4 flex-1 group-hover:text-tri-400 duration-300 ease-IO">{{ item.title }}</span>
+									<div class="w-8 h-8 bg-pri-400 group-hover:bg-tri-400 flex-shrink-0 flex items-center justify-center rounded-full duration-300 ease-IO">
+										<i class="block icon-link text-pri-700 group-hover:text-white duration-300 ease-IO"></i>
+									</div>
+								</a>
+								{% else %}
+								<span class="inline-block py-5 pl-1 pr-14">{{ item.title }}</span>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

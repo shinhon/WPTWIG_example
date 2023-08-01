@@ -1,0 +1,6 @@
+.c-naviRoundBtn {
+    @apply w-10 h-10 rounded-full border-2 border-solid text-pri-700 border-pri-700 hover:text-tri-400 hover:border-tri-400 duration-300 ease-IO flex justify-center items-center;
+    &-disable {
+        @apply pointer-events-none text-sp2-400 border-sp2-400;
+    }
+}

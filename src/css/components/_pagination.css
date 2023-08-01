@@ -1,0 +1,31 @@
+.c-pagination {
+    &__naviWrap {
+        @apply px-2;
+        span, a {
+            width: 1.5rem;
+            overflow: hidden;
+            @apply flex justify-center items-center bg-transparent h-6 p-1 text-center;
+        }
+        span {
+            @apply text-pri-300;
+        }
+        &-notDisable {
+            a {
+                @apply hover:bg-sp2-400 duration-300 ease-IO text-tri-400;
+            }
+        }
+    }
+    &__wrap {
+        @apply px-1.5;
+    }
+    &__btn {
+        min-width: 1.5rem;
+        font-size: 1rem;
+        line-height: 1;
+        overflow: hidden;
+        @apply inline-block h-6 p-1 text-center bg-pri-700 text-white;
+        &-notCurrent {
+            @apply bg-transparent text-sp2-700 hover:text-white hover:bg-tri-400 duration-300 ease-IO;
+        }
+    }
+}

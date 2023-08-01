@@ -1,0 +1,6 @@
+.c-container {
+    @apply relative mx-auto px-5 lg:px-10 xl:max-w-screen-xl;
+    &__inner {
+        @apply lg:w-10/12 mx-auto;
+    }
+}

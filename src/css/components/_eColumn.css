@@ -1,0 +1,21 @@
+.c-eColumn {
+    @apply flex flex-wrap justify-center -mx-4;
+    &__col {
+        @apply w-full sm:w-1/2 px-4 mt-5 sm:mt-0;
+        &-2 {
+            @apply w-full sm:w-2/12 px-4 mt-5 sm:mt-0;
+        }
+        &-3 {
+            @apply w-full sm:w-3/12 px-4 mt-5 sm:mt-0;
+        }
+        &-4 {
+            @apply w-full sm:w-4/12 px-4 mt-5 sm:mt-0;
+        }
+        &-9 {
+            @apply w-full sm:w-9/12 px-4 mt-5 sm:mt-0;
+        }
+        &-10 {
+            @apply w-full sm:w-10/12 px-4 mt-5 sm:mt-0;
+        }
+    }
+}

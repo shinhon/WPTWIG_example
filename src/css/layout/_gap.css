@@ -1,0 +1,6 @@
+.l-gap {
+    @apply pt-10 pb-12 sm:pt-16 sm:pb-24;
+    &-editor {
+        @apply mt-8 sm:mt-16;
+    }
+}

@@ -1,0 +1,13 @@
+<nav class="mt-14 sm:mt-20">
+    <div class="w-full h-px bg-pri-400"></div>
+    <ul class="flex flex-wrap -mx-1">
+        {% for item in links %}
+            {% if post.link == item.link %}
+                <li class="px-1 text-tri-400"><span class="block p-3">{{ item.title }}</span></li>
+            {% else %}
+                <li class="px-1 text-pri-700"><a href="{{ item.link }}" class="block p-3 hover:text-pri-400 duration-300 ease-IO">{{ item.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="w-full h-px bg-pri-400"></div>
+</nav>

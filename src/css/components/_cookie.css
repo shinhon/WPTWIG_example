@@ -1,0 +1,9 @@
+.c-cookie-enter-active,
+.c-cookie-leave-active {
+  @apply transition-all duration-300 ease-IO;
+}
+
+.c-cookie-enter-from,
+.c-cookie-leave-to {
+  @apply opacity-0 pointer-events-none;
+}

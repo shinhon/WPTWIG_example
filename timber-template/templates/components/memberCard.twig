@@ -1,0 +1,24 @@
+<div class="h-full px-5 pb-5 border border-solid border-pri-700">
+    <div class="flex flex-wrap justify-center sm:justify-start">
+        <div class="relative shrink-0 w-10/12 sm:w-24 box-content pr-10 sm:pr-5 sm:mr-4 pt-5">
+            <div class="absolute w-1/3 sm:w-9 right-0 bottom-10 sm:bottom-2 rounded-lg rotate-[30deg] c-gradient-01">
+                <div class="w-full pt-arSquare"></div>
+            </div>
+            <div class="relative w-full pt-arSquare">
+                <img class="absolute w-full h-full top-0 left-0 object-cover" src="{{ item.thumbnail.src ?? require_asset('images/member-default.svg') }}" alt="">
+            </div>
+        </div>
+        <div class="w-full sm:w-auto sm:flex-1 pt-10 sm:pt-5">
+            <h6 class="text-h6 leading-120">{{ item.title }}{{ item.meta('name_in_alphabet') ? " / #{item.meta('name_in_alphabet')}" : '' }}</h6>
+            <h6 class="text-small mt-3 font-light tracking-9 leading-120">{{ item.meta('position') }}</h6>
+            {% if item.meta('project_name') %}
+                <div><a class="inline-block py-1 px-3 border border-solid border-pri-700 text-pri-700 text-center mt-4 text-small leading-none rounded-3xl hover:border-tri-400 hover:text-tri-400 duration-300 ease-IO" href="{{ item.meta('project_name').link }}">{{ item.meta('project_name').title }}</a></div>
+            {% endif %}
+        </div>
+    </div>
+    {% if item.meta('other') %}
+        <div class="mt-4 pt-4 border-t border-solid border-pri-700 editorPanel">
+            {{ item.meta('other') }}
+        </div>
+    {% endif %}
+</div>

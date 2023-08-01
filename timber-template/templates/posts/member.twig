@@ -1,0 +1,54 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="relative -mt-32 pt-32">
+        <div class="absolute w-auto h-auto left-0 top-0">
+            <img src="{{ theme.link }}/src/images/deco_01.svg" alt="">
+        </div>
+    </div>
+    <div class="c-container">
+        <div class="pt-16 c-container__inner pb-24">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-auto">
+                    <h2 class="text-h3 font-medium mt-4">Member</h2>
+                </div>
+                <div class="flex-shrink-0 flex ml-auto order-first sm:order-none">
+                    <div class="c-snsBtn"><a href="javascript:void(window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent(location.href)) ));"><i class="icon-facebook"></i></a></div>
+                    <div class="c-snsBtn">
+                        <a href="javascript:void(window.open('https://twitter.com/intent/tweet?url='.concat(encodeURIComponent(location.href))));"><i class="icon-twitter"></i></a>
+                    </div>
+                </div>
+                {# <div class="mt-9 w-full h-px bg-pri-700"></div> #}
+            </div>
+            <div class="pt-12 pb-16 border-b border-solid border-pri-700">
+                <div class="flex -mx-5 flex-wrap justify-center">
+                    <div class="w-full mt-4 sm:w-3/12 px-5">
+                        <div class="relative w-full pt-arSquare">
+                            <img class="absolute w-full h-full top-0 left-0 object-cover" src="{{ post.thumbnail.src ?? require_asset('images/member-default.svg') }}" alt="">
+                        </div>
+                    </div>
+                    <div class="w-full mt-4 sm:w-9/12 px-5">
+                        <h6 class="text-h6 leading-120">{{ post.title }}{{ post.meta('name_in_alphabet') ? " / #{post.meta('name_in_alphabet')}" : '' }}</h6>
+                        <h6 class="text-small mt-3 font-light tracking-9 leading-120">{{ post.meta('position') }}</h6>
+                        {% if post.meta('project_name') %}
+                            <div><a class="inline-block py-1 px-3 border border-solid border-pri-700 text-pri-700 text-center mt-4 text-small leading-none rounded-3xl hover:border-tri-400 hover:text-tri-400 duration-300 ease-IO" href="{{ post.meta('project_name').link }}">{{ post.meta('project_name').title }}</a></div>
+                        {% endif %}
+                        {% if post.meta('other') %}
+                            <div class="mt-4 pt-4 border-t border-solid border-pri-700 editorPanel">
+                                {{ post.meta('other') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="pt-7 flex justify-between">
+                {% if post.prev %}
+                    <a href="{{ post.prev.link }}" class="text-tri-400 group"><i class="inline-block icon-arrow-left transition-all translate-x-0 group-hover:-translate-x-1 duration-300 ease-IO"></i>PREVIOUS POST</a>
+                {% endif %}
+                {% if post.next %}
+                    <a href="{{ post.next.link }}" class="text-tri-400 ml-auto group">NEXT POST<i class="inline-block icon-arrow-right transition-all translate-x-0 group-hover:translate-x-1 duration-300 ease-IO"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

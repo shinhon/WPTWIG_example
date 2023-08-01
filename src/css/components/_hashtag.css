@@ -1,0 +1,8 @@
+.c-hashtag, .editorPanel .c-hashtag, .wp-editor .c-hashtag {
+    text-decoration-line: none;
+    &:before {
+        content: '#';
+        color: theme('colors.sp1.400');
+        margin-right: theme('spacing.1');
+    }
+}

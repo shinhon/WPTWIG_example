@@ -1,0 +1,3 @@
+.c-snsBtn {
+    @apply ml-5 text-h6 w-8 h-8 rounded-full bg-pri-400 text-pri-700 flex justify-center items-center leading-none hover:text-tri-400 hover:bg-pri-300 duration-300 ease-IO;
+}

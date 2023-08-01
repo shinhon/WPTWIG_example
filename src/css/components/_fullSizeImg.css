@@ -1,0 +1,5 @@
+.c-fullSizeImg {
+    img {
+        @apply block w-full h-auto;
+    }
+}

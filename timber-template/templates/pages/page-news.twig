@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="relative -mt-32 pt-32">
+        <div class="absolute w-auto h-auto right-0 top-0">
+            <img src="{{ theme.link }}/src/images/deco_02.svg" alt="">
+        </div>
+    </div>
+    <div class="c-container">
+        <div class="c-container__inner l-gap">
+            <div>
+                <h3 class="text-h3">NEWS</h3>
+            </div>
+            <div class="pt-12 -mx-4 flex flex-wrap items-stretch">
+                {% for item in news %}
+                    <div class="w-full sm:w-1/2 md:w-1/3 px-4 mt-12">
+                        <div class="h-full bg-pri-300 group hover:opacity-80 duration-300 ease-IO">
+                            <a href="{{ item.link }}" class="relative block pt-ar43">
+                                {% if item.thumbnail.src %}
+                                    <img src="{{ item.thumbnail.src }}" alt="" class="absolute block w-full h-full top-0 left-0 object-cover">
+                                {% else %}
+                                    <img src="{{ theme.link }}/src/images/news_default.svg" alt="" class="absolute block w-full h-full top-0 left-0 object-cover">
+                                {% endif %}
+                            </a>
+                            <a href="{{ item.link }}" class="block px-4 pt-5 pb-6">
+                                <span class="block text-small text-sp1-400">{{ item.date('Y.m.d') }}</span>
+                                <span class="block text-h6 leading-120 group-hover:text-sp1-400 duration-300 ease-IO">{{ item.title }}</span>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {{ include('components/pagination.twig', { 'posts': news }) }}
+        </div>
+    </div>
+{% endblock %}
